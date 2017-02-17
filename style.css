@@ -1,0 +1,803 @@
+/**
+* Theme Name: SRMS
+* Author: View Web Development
+* Author URI: https://viewwebdevelopment.com
+
+* Description: A custom theme for Saxtons River Montessori School
+* Version: 1.1
+* Text Domain: srms
+*/
+
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Custom styles
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+html.fixed, body.fixed {
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'minion-pro', Times, serif;
+    background-color: #ea573e;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 500;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+#image-header {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    background: url('img/head.jpg') center;
+    background-size: cover;
+}
+
+header h1 {
+    font-size: 2.4em;
+}
+
+#main-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    height: 250px;
+    padding: 1em 0;
+    width: 100%;
+    text-align: center;
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.4);
+    background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+}
+
+#main-menu {
+    font-size: 1.2em;
+    background: rgba(234,87,62,0);
+    padding: .65em 0 .4em;
+    transition: background 0s;
+}
+
+#main-menu.fixed {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 300;
+    background: rgba(234,87,62,1);
+    transition: background .4s;
+
+}
+
+#main-menu a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#main-menu a:hover {
+    color: #ea573e;
+}
+
+#main-header h1 {
+    margin: 0 0 -.2em;
+    padding: 0;
+}
+
+header a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#main-menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+#main-menu ul li {
+    display: inline-block;
+    margin-top: -.7em;
+    padding: 0;
+}
+
+
+#main-menu ul li i {
+    display: none;
+}
+
+#main-menu ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: .3em .4em;
+    transition: color, background-color .25s;
+}
+
+#main-menu ul li.current-menu-item {
+    border: 1px solid rgba(255,255,255,0.6);
+}
+
+#main-menu ul li a.active {
+    background-color: rgba(255,255,255,0.3);
+}
+
+#main-menu ul li a:hover {
+    background-color: #FFF;
+    color: #ea573e;
+    cursor: pointer;
+}
+
+
+#main-menu ul ul {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    transition: opacity .4s;
+
+}
+
+#main-menu ul li:hover ul {
+    opacity: 1;
+
+}
+
+#main-menu ul ul li {
+    display: block;
+    margin: .5em 0 -.6em -.4em;
+    padding-left: .8em;
+    color: #FFF;
+    text-align: left;
+}
+
+#main-content {
+    width: 100%;
+    margin: 0;
+    padding: 1em;
+    background: url('img/subtle_surface.png');
+}
+
+#post-area a {
+    text-decoration: none;
+    padding: .25em .4em;
+    color: #ea573e;
+}
+
+#post-area p a, #footer-events p a {
+    padding: .15em .2em;
+    margin: 0 -0.2em;
+}
+
+#post-area a:hover {
+    color: #FFF;
+    background-color: #ea573e;
+    cursor: pointer;
+}
+
+
+.tile {
+    position: relative;
+    display: inline-block;
+    width: 46.4%;
+    margin: 1em 1.8%;
+    height: 100%;
+    background-color: #FFF;
+    padding-bottom: 1.5em;
+    vertical-align: top;
+}
+
+.tile img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.tile .tile-text {
+    padding: .2em 2em;
+}
+
+.tile-text p {
+    display: block;
+    height: 6em;
+}
+
+.tile .tile-text h2, h2.category-head {
+    margin-bottom: 0;
+}
+
+.tile a.tile-link {
+    position: absolute;
+    display: block;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.tile a.tile-link:hover, .tile a.tile-link:active {
+    background-color: rgba(0,0,0,.05);
+}
+
+.tile-text ul {
+    display: none;
+}
+
+.tile .tile-text p {
+    margin-top: .3em;
+}
+
+.tile:hover {
+    box-shadow: 0 0 8px rgba(0,0,0,.3);
+}
+
+input[type='text'], input[type='email'], select {
+    max-width: 400px;
+}
+
+input[type='number'], input[type='text'].card-cvc, input[type='text'].card-expiry-year, input[type='text'].card-expiry-month {
+    max-width: 100px;
+}
+
+input[type='submit'], button, a.button {
+    border: 0;
+    font: inherit;
+    display: inline-block;
+    width: auto;
+    background-color: #ea573e;
+    color: #FFF;
+    font-size: 1.2em;
+    padding: .4em .8em;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.tile a.button {
+    float: right;
+}
+
+input[type='submit']:hover, button:hover, .tile:hover a.button, a.button:hover, a.button:active {
+    background-color: #cc3333;
+}
+
+#post-area {
+    background-color: #FFF;
+    width: 96%;
+    max-width: 960px;
+    margin: 1em auto;
+    padding: 2em 4em;
+}
+
+#post-area article h3.article-title {
+    margin-bottom: 0;
+}
+
+article {
+    font-size: 1.15em;
+    line-height: 1.4em;
+    margin-bottom: 3em;
+}
+
+ul.article-links {
+    margin: 0;
+    padding: 0;
+}
+
+ul.article-links li {
+    margin: .4em .8em .2em -.4em;
+    padding: 0;
+    display: inline-block;
+    font-size: 1.15em;
+    line-height: .8em;
+    color: #ea573e;
+}
+
+
+ul.article-links li a {
+    position: relative;
+    text-decoration: none;
+    padding: .25em .3em;
+    color: #ea573e;
+}
+
+ul.article-links li a:hover {
+    color: #FFF;
+    background-color: #ea573e;
+    cursor: pointer;
+}
+
+#post-area article img.size-large {
+    width: 100%;
+    height: auto;
+    margin: .2em 0 1.4em;
+}
+
+#post-area article h4 {
+    font-size: 1.05em;
+    margin-bottom: 0;
+}
+
+.back-to-top {
+    float: right;
+    font-size: .9em;
+    color: #999;
+    text-decoration: none;
+}
+
+.back-to-top:hover {
+    color: #ea573e;
+}
+
+#main-footer {
+    width:100%;
+    height:auto;
+    position:relative;
+    margin: 0;
+    padding: 0;
+    background:#FFF;
+}
+
+#footer-events a {
+    text-decoration: none;
+    margin-left: -.4em;
+    padding: .25em .4em;
+    color: #ea573e;
+}
+
+#footer-events a:hover {
+    color: #FFF;
+    background-color: #ea573e;
+    cursor: pointer;
+}
+
+#footer-panels {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-panel {
+    display: inline-block;
+    vertical-align: top;
+    width: 33.3%;
+    height: auto;
+    margin: .5em auto;
+    padding: 1em 2em;
+}
+
+.footer-panel h3 {
+    margin-bottom: -.7em;
+}
+
+.footer-panel .gce-list-event,
+.footer-panel .gce-tooltip-event {
+    background-color: #FFF;
+    padding: 0;
+}
+
+.footer-panel address {
+    white-space: pre-line;
+}
+
+#footer-logo {
+    border-right: 1px solid #CCC;
+    border-left: 1px solid #CCC;
+    text-align: center;
+}
+
+#footer-logo img {
+    height: auto;
+    max-height: 98%;
+    max-width: 90%;
+    border: 0;
+}
+
+#footer-banner {
+    background-color: #ea573e;
+    color: #FFF;
+    width: 100%;
+    height: 3.5em;
+    margin: 0;
+    padding: .1em;
+    text-align: center;
+}
+
+.social-links {
+    margin: .3em 0 -.2em;
+    font-size: 2em;
+}
+
+.social-links a i.fa-map-marker {
+    color: #d34836;
+}
+
+.social-links a i.fa-facebook-official {
+    color: #3b5999;
+}
+
+.social-links a i.fa-facebook-official:hover, .social-links a i.fa-map-marker:hover {
+    color: #ea573e;
+}
+
+.phone-link {
+    color: #ea573e;
+    text-decoration: none;
+}
+
+form {
+    display: block;
+    margin: 0 auto;
+}
+
+fieldset {
+    border: none;
+    margin: 15px 0;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 4px;
+}
+
+form label.radio {
+    display: inline;
+}
+
+form ul {
+    padding: 0;
+}
+
+form ul li {
+    display: inline-block;
+}
+
+form input {
+    width: 100%;
+}
+
+form textarea {
+    width: 80%;
+    min-height: 6em;
+}
+
+form input:not(:focus):invalid {
+    background-color: #FFD9D9;
+}
+
+form input[type='radio'] {
+    display: inline-block;
+    width:30px;
+    margin-left: 25px;
+}
+
+form input[value='static']{
+    margin-left: 0;
+}
+
+form input[type="date"] {
+    width: 150px;
+}
+
+/* ==========================================================================
+   Media Queries for Responsive Design.
+   ========================================================================== */
+
+
+@media only screen and (max-width: 900px) {
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    #main-menu {
+        font-size: 1em;
+    }
+
+    .footer-panel {
+        width: 50%;
+    }
+
+    #footer-logo {
+        display: none;
+    }
+
+    .tile-text p {
+        height: 8em;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    #post-area {
+        padding: 2em 2.5em;
+    }
+
+    ul.article-links li {
+        display: block;
+        width: 100%;
+    }
+
+    .tile-text p {
+        height: 11em;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+
+    #main-header {
+        background: rgba(0, 0, 0, 0.6);
+        background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+        background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+    }
+
+    #main-content {
+        padding: .2em;
+    }
+
+    .tile {
+        width: 98%;
+        margin: .7em 1%;
+    }
+
+    .tile-text p {
+        font-size: .9em;
+    }
+
+    .tile .tile-text {
+        padding: .2em 1em;
+    }
+
+    #post-area {
+        padding: 2em 1em;
+    }
+
+    #main-content article p, #main-content ul.article-links {
+        font-size: .8em;
+    }
+
+    #main-content ul.article-links li {
+        line-height: 1em;
+    }
+
+    #form-area {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+
+    .footer-panel {
+        width: 100%;
+    }
+}
+
+/* Media Queries for larger screens */
+
+@media only screen and (min-width: 1366px) {
+
+    header h1 {
+        font-size: 2.6em;
+    }
+
+    #main-menu {
+        font-size: 1.3em;
+    }
+
+    .tile {
+        width: 23%;
+        margin: .75em 1%;
+    }
+
+    .tile-text p {
+        height: 11em;
+    }
+
+}
+
+@media only screen and (min-width: 1450px) {
+    .tile-text p {
+        height: 9em;
+    }
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
