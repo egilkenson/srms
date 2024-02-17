@@ -4,7 +4,7 @@
 * Author URI: https://viewwebdevelopment.com
 
 * Description: A custom theme for Saxtons River Montessori School
-* Version: 1.4.1
+* Version: 1.4.2
 * Text Domain: srms
 */
 
@@ -326,6 +326,11 @@ header a {
     color: white
 }
 
+input {
+    margin-top: 6px;
+    line-height: 1.8;
+}
+
 input[type='text'], input[type='email'], select {
     max-width: 400px
 }
@@ -354,6 +359,10 @@ input[type='submit'], button, a.button {
 
 input[type='submit']:hover, button:hover, .tile:hover a.button, a.button:hover, a.button:active {
     background-color: #c33
+}
+
+.wpcf7-form {
+    padding-bottom: 1rem;
 }
 
 #post-area {

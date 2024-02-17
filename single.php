@@ -5,7 +5,7 @@
             <article id="#<?php srms_post_name(); ?>">
                 <h3><?php the_title(); ?></h3>
                 <?php the_content(); ?>
-                <?php edit_post_link( __( 'Edit', 'srms' ), '<span class="edit-link">', '</span>' ); ?>
+	            <?php edit_post_link( __( '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', 'srms' ), '<span class="edit-link">', '</span>' ); ?>
                     <?php $category = get_the_category(); ?>
                     <?php if ($category[0]->cat_name == "School"): ?>
                         <a href="/our-school/" class="back-to-top">

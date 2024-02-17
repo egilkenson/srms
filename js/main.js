@@ -1,54 +1,59 @@
 (function () {
+  var docElem = document.documentElement,
+    didScroll = false,
+    menu = document.getElementById('main-menu'),
+    mh = menu.clientHeight,
+    changeHeaderOn = mh
 
-// Fix navigation menu on scroll
+  docElem.style.setProperty('--mh', (mh + 10) + 'px')
 
-    var relocateNav = (function () {
+  function scrollPage () {
+    var sy = scrollY()
+    if (sy >= changeHeaderOn) {
+      document.getElementById('main-menu')
+        .classList
+        .add('fixed')
+    } else {
+      document.getElementById('main-menu')
+        .classList
+        .remove('fixed')
+    }
+    didScroll = false
+  }
 
-        var docElem = document.documentElement,
-            didScroll = false,
-            changeHeaderOn = 120;
+  function scrollY () {
+    return window.pageYOffset || docElem.scrollTop
+  }
 
-        function init() {
-            window.addEventListener('scroll', function (event) {
-                if (!didScroll) {
-                    didScroll = true;
-                    setTimeout(scrollPage, 250);
-                }
-            }, false);
-        }
+  window.addEventListener('scroll', function (event) {
+    if (!didScroll) {
+      didScroll = true
+      scrollPage()
+    }
+  }, false)
 
-        function scrollPage() {
-            var sy = scrollY();
-            if (sy >= changeHeaderOn) {
-                $('#main-menu').addClass('fixed');
-            }
-            else {
-                $('#main-menu').removeClass('fixed');
-            }
-            didScroll = false;
-        }
+  if (!('scrollBehavior' in docElem.style)) {
+    var links = document.querySelectorAll('.article-links');
+    [].forEach.call(links, function (el) {
+      el.addEventListener('click', function () {
+        setTimeout(scrollBack, 10)
+      },
+      false)
+    })
+  }
 
-        function scrollY() {
-            return window.pageYOffset || docElem.scrollTop;
-        }
+  function scrollBack () {
+    var menu = document.getElementById('main-menu'), mh = menu.clientHeight,
+      scrl = -mh - 15
+    window.scrollBy(0, scrl)
+  }
 
-        init();
-
-    })();
-
-// Bounce scroll back when clicking intra-page links, to avoid hiding titles under fixed menu
-
-    window.onload = function () {
-        $(".article-links").click(function (e) {
-            setTimeout(scrollBack, 10);
-        });
-
-        function scrollBack() {
-            var menu = document.getElementById("main-menu"),
-                mh = menu.clientHeight,
-                scrl = -mh - 5;
-
-            window.scrollBy(0, scrl);
-        }
-    };
-});
+  window.addEventListener('wpcf7submit', (e) => {
+    const tuitionField = document.querySelector('.wpcf7-form-control-wrap[data-name="tuition-amount"] input')
+    const tuitionAmount = tuitionField.value
+    const tuitionMessage = document.createElement('p')
+    tuitionMessage.innerHTML = `Paying tuition amount of $${tuitionAmount}.`
+    tuitionField.setAttribute('disabled', true)
+    tuitionField.insertAdjacentElement('afterend', tuitionMessage)
+  })
+})()

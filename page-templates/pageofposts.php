@@ -55,7 +55,7 @@ get_header(); ?>
             <?php if ( !empty($post->post_content) ): ?>
             <article id="<?php srms_post_name(); ?>">
                 <?php the_content(); ?>
-                <?php edit_post_link( __( 'Edit', 'srms' ), '<span class="edit-link">', '</span>' ); ?>
+                <?php edit_post_link( __( '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', 'srms' ), '<span class="edit-link">', '</span>' ); ?>
             </article>
             <?php endif; ?>
         <?php endwhile;
@@ -68,7 +68,7 @@ get_header(); ?>
                     <article id="<?php srms_post_name(); ?>">
                         <h3 class="article-title"><?php the_title(); ?></h3>
                         <?php the_content(); ?>
-                        <?php edit_post_link( __( 'Edit', 'srms' ), '<span class="edit-link">', '</span>' ); ?>
+	                    <?php edit_post_link( __( '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', 'srms' ), '<span class="edit-link">', '</span>' ); ?>
                         <a href="#" class="back-to-top">Back To Top <i class="fa fa-level-up"></i></a>
                     </article>
                 <?php endwhile; ?>

@@ -41,7 +41,7 @@ function srms_customizer($wp_customize)
     $wp_customize->add_control(
         'srms_phone',
         array(
-            'type' => 'text',
+            'type' => 'tel',
             'label' => 'Phone Number:',
             'section' => 'srms_contact_info',
         )
@@ -57,7 +57,7 @@ function srms_customizer($wp_customize)
     $wp_customize->add_control(
         'srms_facebook',
         array(
-            'type' => 'text',
+            'type' => 'url',
             'label' => 'Facebook Page:',
             'section' => 'srms_contact_info',
         )
@@ -92,6 +92,11 @@ function srms_customizer($wp_customize)
             )
         )
     );
+
+    $wp_customize->remove_section('widgets');
+	$wp_customize->remove_section('static_front_page');
+	$wp_customize->remove_section('additional_css');
+
 }
 
 add_action('customize_register', 'srms_customizer');

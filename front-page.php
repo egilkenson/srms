@@ -12,8 +12,9 @@
 <?php $args = array(
     'post_type' => array('tile'),
     'posts_per_page' => '4',
+    'meta_key' => 'order',
+    'orderby' => 'meta_value_num',
     'order' => 'ASC',
-    'orderby' => 'order',
     );
 $query = new WP_Query($args); ?>
 
@@ -28,11 +29,12 @@ $query = new WP_Query($args); ?>
             <div class="tile">
         <?php endif; ?>
     <a href="<?php echo get_page_link(get_post_meta(get_the_ID(), 'tilelink', true)); ?>"
-       class="tile-link"></a><?php the_post_thumbnail('home-tile'); ?>
+       class="tile-link"></a><?php the_post_thumbnail('home-tile', ['loading' => 'lazy']); ?>
         <div class="tile-text"><h2><?php the_title(); ?></h2>
             <?php the_content(); ?>
-            <a href="#" class="button"><?php the_title(); ?></a>
+	        <a href="#" class="button"><?php the_title(); ?></a>
         </div>
+	    <?php edit_post_link( __( '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', 'srms' ), '<span class="edit-link" title="Edit this tile">', '</span>' ); ?>
         </div><?php if ($count !== 4) : ?><div class="tile">
         <?php endif; ?>
     <?php endwhile; ?>

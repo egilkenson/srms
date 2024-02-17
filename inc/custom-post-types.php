@@ -35,7 +35,7 @@ add_action('add_meta_boxes', 'srms_add_order_meta_box');
 /**
  * Prints the box content.
  *
- * @param WP_Post $post The object for the current post/page.
+ * @param object $post WP_Post object for the current post/page.
  */
 function srms_order_meta_box_callback($post)
 {
@@ -112,7 +112,6 @@ function srms_save_order_meta_box_data($post_id)
     // Update the meta field in the database.
     update_post_meta($post_id, 'order', $input);
 }
-
 add_action('save_post', 'srms_save_order_meta_box_data');
 
 /**
@@ -134,6 +133,29 @@ function srms_show_columns($name)
             $order = get_post_meta($post->ID, 'order', true);
             echo $order;
     }
+}
+
+add_action('quick_edit_custom_box',  'srms_add_quick_edit', 10, 2);
+function srms_add_quick_edit($column_name, $post_id) {
+	if ($column_name != 'order') return;
+	?>
+	<fieldset class="inline-edit-col-left">
+		<div class="inline-edit-col">
+			<span class="title">Display Order</span>
+			<?php $value = get_post_meta($post_id, 'order', true);
+
+			if (!$value) {
+			$value = 10;
+			}
+
+			echo '<label for="srms_order">';
+				_e('Enter a Number > 0', 'srms');
+				echo ' ID: '. $post_id .'</label> ';
+			echo '<input type="number" id="srms_order" name="srms_order" value="' . esc_attr($value) . '" />';
+			?>
+		</div>
+	</fieldset>
+	<?php
 }
 
 /**
@@ -223,7 +245,7 @@ add_action('add_meta_boxes', 'srms_add_tile_link');
 /**
  * Prints the box content.
  *
- * @param WP_Post $post The object for the current post/page.
+ * @param object $post WP_Post object for the current post/page.
  */
 function srms_tile_link_meta_box_callback($post)
 {
@@ -332,12 +354,23 @@ function srms_category_meta_box()
 
     foreach ($screens as $screen) {
 
-        add_meta_box(
-            'srms-page-category',
-            __('Page Posts Category', 'srms'),
-            'srms_category_meta_box_callback',
-            $screen, 'normal', 'core'
-        );
+	    global $post;
+
+	    if(!empty($post))
+	    {
+		    $pageTemplate = get_post_meta($post->ID, '_wp_page_template', true);
+
+		    //Only show on Page of Posts pages
+		    if($pageTemplate == 'page-templates/pageofposts.php' ) {
+
+			    add_meta_box(
+				    'srms-page-category',
+				    __( 'Page Posts Category', 'srms' ),
+				    'srms_category_meta_box_callback',
+				    $screen, 'normal', 'core'
+			    );
+		    }
+	    }
     }
 }
 
@@ -346,7 +379,7 @@ add_action('add_meta_boxes', 'srms_category_meta_box');
 /**
  * Prints the box content.
  *
- * @param WP_Post $post The object for the current post/page.
+ * @param object $post WP_Post object for the current post/page.
  */
 function srms_category_meta_box_callback($post)
 {

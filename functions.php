@@ -84,8 +84,8 @@ function srms_scripts_and_styles()
         wp_enqueue_script('jquery');
     }
 
-    wp_enqueue_style('style', get_stylesheet_uri());
-    wp_register_script('main', get_template_directory_uri() . '/js/main.js', false, false, false);
+    wp_enqueue_style('style', get_stylesheet_uri(), '', '1.4.2');
+    wp_register_script('main', get_template_directory_uri() . '/js/main.js', [], '1.4.2', true);
     wp_enqueue_script('main');;
 }
 
@@ -111,6 +111,33 @@ function srms_custom_menu_page_items() {
     // remove_menu_page( 'options-general.php' );           //Settings
 }
 add_action( 'admin_menu', 'srms_custom_menu_page_items' );
+
+add_filter(
+	'wpcf7_stripe_payment_intent_parameters',
+
+	function ( $params ) {
+		// Get the WPCF7_Submission object
+		$submission = WPCF7_Submission::get_instance();
+
+		$tuition = (array) $submission->get_posted_data( 'tuition-amount' );
+		$tuition = (float) array_shift( $tuition );
+
+		// Calculate the amount
+		$amount = 100 * $tuition;
+		$params['amount'] = $amount;
+
+		// Retrieve the buyer's email from the 'your-email' field value
+		$receipt_email = $submission->get_posted_data( 'your-email' );
+
+		if ( is_email( $receipt_email ) ) {
+			$params['receipt_email'] = $receipt_email;
+		}
+
+		return $params;
+	},
+
+	10, 1
+);
 
 /**
  * Include additional custom functions
