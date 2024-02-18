@@ -77,19 +77,33 @@ add_action('widgets_init', 'srms_setup_sidebars');
 
 function srms_scripts_and_styles()
 {
-    if (!is_admin()) {
-        wp_deregister_script('jquery');
-        wp_register_script('jquery',
-            ("//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"), false);
-        wp_enqueue_script('jquery');
-    }
-
     wp_enqueue_style('style', get_stylesheet_uri(), '', '1.4.2');
     wp_register_script('main', get_template_directory_uri() . '/js/main.js', [], '1.4.2', true);
     wp_enqueue_script('main');;
 }
 
 add_action('wp_enqueue_scripts', 'srms_scripts_and_styles');
+
+/**
+ * Add font CSS to header
+ *
+ * @return void
+ */
+function srms_fontface_head_tag() {
+  ?>
+  <style>
+      @font-face {
+          font-family: 'Alegreya';
+					font-display: auto;
+          src: url(<?php echo get_stylesheet_directory_uri() ?>/fonts/Alegreya-VariableFont_wght.ttf);
+          font-weight: 200 600;
+      }
+  </style>
+  <?php
+}
+
+add_action( 'wp_head', 'srms_fontface_head_tag' );
+
 
 /*
  *  Clean up dashboard options to remove unnecessary items
